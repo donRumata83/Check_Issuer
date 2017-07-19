@@ -1,4 +1,4 @@
-package Parsers;
+package Model;
 
 public class SimpleFileParser {
 }
