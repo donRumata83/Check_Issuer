@@ -7,11 +7,15 @@ import Listeners.SaveAndPrintButtonListener;
 import javax.swing.*;
 import java.awt.*;
 
-public class View extends JFrame{
+public class View extends JFrame {
     private JPanel topPanel;
     private JPanel mainPanel;
     private JPanel savePrintPanel;
 
+    private JTextField customer;
+    private JTextField product;
+    private JTextField summ;
+    private JTextField cache;
 
     public View() throws HeadlessException {
         super("Программа для выписки чеков");
@@ -32,14 +36,11 @@ public class View extends JFrame{
         this.savePrintPanel = addSavePrintPanel();
         this.getContentPane().add(savePrintPanel, BorderLayout.SOUTH);
 
-
-
-
         this.setVisible(true);
 
     }
 
-    private JPanel addTopPanelWithButtons (){
+    private JPanel addTopPanelWithButtons() {
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout(FlowLayout.LEFT));
         panel.setSize(800, 100);
@@ -57,10 +58,40 @@ public class View extends JFrame{
         return panel;
     }
 
-    private JPanel addMainPanel () {
+    private JPanel addMainPanel() {
         JPanel panel = new JPanel();
         panel.setSize(800, 300);
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
+        JPanel customerPan = new JPanel();
+        customerPan.add(new JLabel("Customer"));
+        this.customer = new JTextField("", 50);
+
+
+        customerPan.add(customer);
+        panel.add(customerPan);
+
+        JPanel productPan = new JPanel();
+        productPan.add(new JLabel("Product "));
+        this.product = new JTextField("", 50);
+
+        productPan.add(product);
+        panel.add(productPan);
+
+
+        JPanel summPane = new JPanel();
+        summPane.add(new JLabel("Summ    "));
+        this.summ = new JTextField("", 50);
+
+        summPane.add(summ);
+        panel.add(summPane);
+
+        JPanel cachePan = new JPanel();
+        cachePan.add(new JLabel("Cache   "));
+        this.cache = new JTextField("", 50);
+
+        cachePan.add(cache);
+        panel.add(cachePan);
 
         return panel;
     }
