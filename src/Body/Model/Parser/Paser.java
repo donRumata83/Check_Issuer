@@ -10,5 +10,6 @@ public interface Paser {
     List<Cheque> getForDate(Date from, Date to);
     Cheque getByNumber(String number);
     List<Cheque> getByProductName(String name);
+    void addCheque(Cheque cheque);
 
 }

@@ -33,15 +33,19 @@ public class SimpleFileParser implements Paser {
                 list.add(new Cheque(array[0], array[1], array[2], format.parse(array[3]), Double.parseDouble(array[4])));
             }
         } catch (IOException e) {
-        } catch (ParseException e) {}
+        } catch (ParseException e) {
+        }
     }
 
-    public void addCheque(Cheque cheque) {list.add(cheque);}
+    @Override
+    public void addCheque(Cheque cheque) {
+        list.add(cheque);
+    }
 
     private void save() {
         StringBuilder stringBuilder;
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(new File(fileName)))) {
-            for (Cheque cheque: list) {
+            for (Cheque cheque : list) {
                 stringBuilder = new StringBuilder();
                 stringBuilder.append(cheque.getNumber()).append("\t");
                 stringBuilder.append(cheque.getCustomer()).append("\t");
@@ -50,8 +54,8 @@ public class SimpleFileParser implements Paser {
                 stringBuilder.append(cheque.getSumm()).append("\t").append("\n");
                 writer.write(stringBuilder.toString());
             }
+        } catch (IOException e) {
         }
-        catch (IOException e) {}
     }
 
     @Override
@@ -62,8 +66,8 @@ public class SimpleFileParser implements Paser {
     @Override
     public List<Cheque> getForDate(Date from, Date to) {
         List<Cheque> result = new ArrayList<>();
-        for (Cheque cheque: list) {
-            if (cheque.getDate().after(from) && cheque.getDate().before(to));
+        for (Cheque cheque : list) {
+            if (cheque.getDate().after(from) && cheque.getDate().before(to)) ;
             result.add(cheque);
         }
         return result;
@@ -71,7 +75,7 @@ public class SimpleFileParser implements Paser {
 
     @Override
     public Cheque getByNumber(String number) {
-        for (Cheque cheque: list) {
+        for (Cheque cheque : list) {
             if (cheque.getNumber().equals(number)) return cheque;
         }
         return null;
@@ -80,7 +84,7 @@ public class SimpleFileParser implements Paser {
     @Override
     public List<Cheque> getByProductName(String name) {
         List<Cheque> result = new ArrayList<>();
-        for (Cheque cheque: list) {
+        for (Cheque cheque : list) {
             if (cheque.getProduct().equals(name)) result.add(cheque);
         }
         return null;
