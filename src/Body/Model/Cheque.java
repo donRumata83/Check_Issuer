@@ -3,10 +3,10 @@ package Body.Model;
 import java.util.Date;
 
 public class Cheque {
+    private String number;
     private String customer;
     private String product;
     private Date date;
-    private String number;
     private double summ;
     private boolean isExistBefore;
 
@@ -20,5 +20,31 @@ public class Cheque {
         }
     }
 
+    public Cheque(String number, String customer, String product, Date date, double summ) {
+        this.number = number;
+        this.customer = customer;
+        this.product = product;
+        this.date = date;
+        this.summ = summ;
+    }
 
+    public String getNumber() {
+        return number;
+    }
+
+    public String getProduct() {
+        return product;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public String getCustomer() {
+        return customer;
+    }
+
+    public double getSumm() {
+        return summ;
+    }
 }

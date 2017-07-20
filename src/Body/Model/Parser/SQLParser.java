@@ -1,9 +1,12 @@
-package Body.Model;
+package Body.Model.Parser;
+
+import Body.Model.Cheque;
+
 
 import java.util.Date;
 import java.util.List;
 
-public class SQLParser implements Paser{
+public class SQLParser implements Paser {
     @Override
     public Cheque getLast() {
         return null;
@@ -15,7 +18,7 @@ public class SQLParser implements Paser{
     }
 
     @Override
-    public Cheque getByNumber() {
+    public Cheque getByNumber(String number) {
         return null;
     }
 
