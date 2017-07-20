@@ -11,9 +11,14 @@ public class Controller {
         this.model = model;
     }
 
-    public void save(Cheque cheque) {}
+    public void save(Cheque cheque) {
+        this.cheque = cheque;
+        System.out.println("saving");
+    }
 
-    public void print() {}
+    public void print() {
+        System.out.println("printing");
+    }
 
     public String getNewNumber() {
 

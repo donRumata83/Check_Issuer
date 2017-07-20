@@ -3,6 +3,7 @@ package Body;
 import Body.Listeners.FindButtonListener;
 import Body.Listeners.NewButtonListener;
 import Body.Listeners.SaveAndPrintButtonListener;
+import Body.Listeners.TextFieldsFocusListener;
 import Body.Model.Cheque;
 
 import javax.swing.*;
@@ -20,6 +21,8 @@ public class View extends JFrame {
     private JTextField cache;
 
     private Controller controller;
+
+    public static final String ENTER_VALUE = "Enter value";
 
     public View(Controller controller) throws HeadlessException {
         super("Программа для выписки чеков");
@@ -69,17 +72,22 @@ public class View extends JFrame {
         panel.setSize(800, 300);
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
+
+
         JPanel customerPan = new JPanel();
         customerPan.add(new JLabel("Customer"));
         this.customer = new JTextField("Физична особа", 50);
         customerPan.add(customer);
         this.number = new JTextField(controller.getNewNumber(), 10);
+        number.setFocusable(false);
         customerPan.add(number);
         panel.add(customerPan);
 
         JPanel productPan = new JPanel();
         productPan.add(new JLabel("Product "));
-        this.product = new JTextField("", 50);
+        this.product = new JTextField(ENTER_VALUE, 50);
+        product.addFocusListener(new TextFieldsFocusListener(product));
+        product.setForeground(Color.GRAY);
 
         productPan.add(product);
         panel.add(productPan);
@@ -87,15 +95,17 @@ public class View extends JFrame {
 
         JPanel summPane = new JPanel();
         summPane.add(new JLabel("Summ    "));
-        this.summ = new JTextField("", 50);
-
+        this.summ = new JTextField(ENTER_VALUE, 50);
+        summ.setForeground(Color.GRAY);
+        summ.addFocusListener(new TextFieldsFocusListener(summ));
         summPane.add(summ);
         panel.add(summPane);
 
         JPanel cachePan = new JPanel();
         cachePan.add(new JLabel("Cache   "));
-        this.cache = new JTextField("", 50);
-
+        this.cache = new JTextField(ENTER_VALUE, 50);
+        cache.setForeground(Color.GRAY);
+        cache.addFocusListener(new TextFieldsFocusListener(cache));
         cachePan.add(cache);
         panel.add(cachePan);
 
@@ -123,6 +133,7 @@ public class View extends JFrame {
 
     public void save() {
         controller.save(new Cheque(customer.getText(), product.getText(), number.getText(), summ.getText()));
+        nullTheFields();
     }
 
     public void nullTheFields() {
@@ -139,5 +150,6 @@ public class View extends JFrame {
     public void getNewNumber() {
         controller.getNewNumber();
     }
+
 
 }

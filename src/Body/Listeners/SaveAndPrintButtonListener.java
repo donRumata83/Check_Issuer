@@ -5,7 +5,7 @@ import Body.View;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class SaveAndPrintButtonListener implements ActionListener{
+public class SaveAndPrintButtonListener implements ActionListener {
     private View view;
 
     public SaveAndPrintButtonListener(View view) {
@@ -15,7 +15,14 @@ public class SaveAndPrintButtonListener implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
-
+            case "save":
+                view.save();
+                break;
+            case "print": {
+                view.save();
+                view.print();
+                break;
+            }
         }
     }
 }

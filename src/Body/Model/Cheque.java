@@ -15,9 +15,10 @@ public class Cheque {
         this.product = product;
         this.date = new Date();
         this.number = numberInMounth;
-        this.summ = Double.parseDouble(summ);
+        if (summ != "") {
+            this.summ = Double.parseDouble(summ);
+        }
     }
-
 
 
 }
