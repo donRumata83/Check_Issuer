@@ -1,4 +1,4 @@
-package Model;
+package Body.Model;
 
 public class ExcelAdapter {
 }

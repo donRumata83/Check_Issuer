@@ -1,8 +1,9 @@
-package View;
+package Body;
 
-import Listeners.FindButtonListener;
-import Listeners.NewButtonListener;
-import Listeners.SaveAndPrintButtonListener;
+import Body.Listeners.FindButtonListener;
+import Body.Listeners.NewButtonListener;
+import Body.Listeners.SaveAndPrintButtonListener;
+import Body.Model.Cheque;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,14 +13,18 @@ public class View extends JFrame {
     private JPanel mainPanel;
     private JPanel savePrintPanel;
 
+    private JTextField number;
     private JTextField customer;
     private JTextField product;
     private JTextField summ;
     private JTextField cache;
 
-    public View() throws HeadlessException {
+    private Controller controller;
+
+    public View(Controller controller) throws HeadlessException {
         super("Программа для выписки чеков");
 
+        this.controller = controller;
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.setSize(800, 520);
@@ -38,6 +43,7 @@ public class View extends JFrame {
 
         this.setVisible(true);
 
+
     }
 
     private JPanel addTopPanelWithButtons() {
@@ -47,7 +53,7 @@ public class View extends JFrame {
 
         JButton newButton = new JButton("New check");
         newButton.setActionCommand("new");
-        newButton.addActionListener(new NewButtonListener());
+        newButton.addActionListener(new NewButtonListener(this));
         panel.add(newButton);
 
 
@@ -65,10 +71,10 @@ public class View extends JFrame {
 
         JPanel customerPan = new JPanel();
         customerPan.add(new JLabel("Customer"));
-        this.customer = new JTextField("", 50);
-
-
+        this.customer = new JTextField("Физична особа", 50);
         customerPan.add(customer);
+        this.number = new JTextField(controller.getNewNumber(), 10);
+        customerPan.add(number);
         panel.add(customerPan);
 
         JPanel productPan = new JPanel();
@@ -98,7 +104,7 @@ public class View extends JFrame {
 
     private JPanel addSavePrintPanel() {
         JPanel panel = new JPanel();
-        SaveAndPrintButtonListener listener = new SaveAndPrintButtonListener();
+        SaveAndPrintButtonListener listener = new SaveAndPrintButtonListener(this);
         panel.setLayout(new FlowLayout(FlowLayout.RIGHT));
         panel.setSize(800, 100);
 
@@ -113,6 +119,25 @@ public class View extends JFrame {
         panel.add(print);
 
         return panel;
+    }
+
+    public void save() {
+        controller.save(new Cheque(customer.getText(), product.getText(), number.getText(), summ.getText()));
+    }
+
+    public void nullTheFields() {
+        customer.setText("Фізична особа");
+        product.setText("");
+        summ.setText("");
+        cache.setText("");
+    }
+
+    public void print() {
+        controller.print();
+    }
+
+    public void getNewNumber() {
+        controller.getNewNumber();
     }
 
 }

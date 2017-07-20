@@ -1,4 +1,6 @@
-import View.View;
+package Body;
+
+import Body.Model.Model;
 
 import javax.swing.*;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
@@ -13,6 +15,9 @@ public class MainClass {
             e.printStackTrace();
 
         }
-        View view = new View();
+        Model model = new Model();
+        Controller controller = new Controller(model);
+        View view = new View(controller);
+
     }
 }
