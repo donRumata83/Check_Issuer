@@ -138,9 +138,9 @@ public class View extends JFrame {
 
     public void nullTheFields() {
         customer.setText("Фізична особа");
-        product.setText("");
-        summ.setText("");
-        cache.setText("");
+        product.setText(ENTER_VALUE);
+        summ.setText(ENTER_VALUE);
+        cache.setText(ENTER_VALUE);
     }
 
     public void print() {
