@@ -6,7 +6,11 @@ import Body.Model.Cheque;
 import java.util.Date;
 import java.util.List;
 
-public class SQLParser implements Paser {
+public class SQLParser implements PaserInt {
+    @Override
+    public void addCheque(Cheque cheque) {
+    }
+
     @Override
     public Cheque getLast() {
         return null;

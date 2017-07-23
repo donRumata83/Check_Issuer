@@ -5,7 +5,7 @@ import Body.Model.Cheque;
 import java.util.Date;
 import java.util.List;
 
-public interface Paser {
+public interface PaserInt {
     Cheque getLast();
     List<Cheque> getForDate(Date from, Date to);
     Cheque getByNumber(String number);

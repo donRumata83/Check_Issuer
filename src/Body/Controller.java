@@ -13,7 +13,7 @@ public class Controller {
 
     public void save(Cheque cheque) {
         this.cheque = cheque;
-        System.out.println("saving");
+        model.save(cheque);
     }
 
     public void print() {

@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class SimpleFileParser implements Paser {
+public class SimpleFileParser implements PaserInt {
     private String fileName;
     private List<Cheque> list;
     private SimpleDateFormat format;

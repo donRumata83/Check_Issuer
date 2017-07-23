@@ -14,6 +14,8 @@ public class View extends JFrame {
     private JPanel mainPanel;
     private JPanel savePrintPanel;
 
+
+
     private JTextField number;
     private JTextField customer;
     private JTextField product;
@@ -151,5 +153,8 @@ public class View extends JFrame {
         controller.getNewNumber();
     }
 
+    public void setNumber(String number) {
+        this.number.setText(number);
+    }
 
 }

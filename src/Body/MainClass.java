@@ -1,6 +1,7 @@
 package Body;
 
 import Body.Model.Model;
+import Body.Model.Parser.SimpleFileParser;
 
 import javax.swing.*;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
@@ -18,6 +19,7 @@ public class MainClass {
         Model model = new Model();
         Controller controller = new Controller(model);
         View view = new View(controller);
-
+        model.setView(view);
+        model.setParser(new SimpleFileParser(""));
     }
 }
