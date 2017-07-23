@@ -40,6 +40,8 @@ public class SimpleFileParser implements PaserInt {
     @Override
     public void addCheque(Cheque cheque) {
         list.add(cheque);
+        save();
+        parse();
     }
 
     private void save() {

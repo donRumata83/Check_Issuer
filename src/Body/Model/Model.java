@@ -24,9 +24,9 @@ public class Model {
         int chequeNumber = Integer.parseInt(array[0]);
         int monthNumber = Integer.parseInt(array[1]);
         Date curentDate = new Date();
-        int month = curentDate.getMonth();
-        if (month == monthNumber) newLastNumber = ++chequeNumber + "" + monthNumber;
-        else newLastNumber = 1 + "" + monthNumber;
+        int month = curentDate.getMonth()+1;
+        if (month == monthNumber) newLastNumber = ++chequeNumber + "-" + monthNumber;
+        else newLastNumber = 1 + "-" + monthNumber;
         return newLastNumber;
     }
 
